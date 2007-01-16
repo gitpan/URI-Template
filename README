@@ -1,5 +1,5 @@
 NAME
-    URI::Template - Object for handle URI templates
+    URI::Template - Object for handling URI templates
 
 SYNOPSIS
         use URI::Template;
@@ -39,6 +39,10 @@ METHODS
   process( %vars )
     Given a list of key-value pairs, it will URI escape the values and
     substitute them in to the template. Returns a URI object.
+
+  process_to_string( %vars )
+    Processes key-values pairs like the "process" method, but doesn't
+    inflate the result to a URI object.
 
 AUTHOR
     * Brian Cassidy <bricas@cpan.org>
