@@ -7,6 +7,9 @@ SYNOPSIS
         my $uri      = $template->process( x => 'y' );
         # uri is a URI object with value 'http://example.com/y'
 
+        my %result = $template->deparse( $uri );
+        # %result is ( x => 'y' )
+
 DESCRIPTION
     This is an initial attempt to provide a wrapper around URI templates as
     described at
@@ -28,7 +31,10 @@ INSTALLATION
             make install
 
 METHODS
-  new( $uri )
+  new( $template )
+    Creates a new URI::Template instance with the template passed in as the
+    first parameter.
+
   as_string( )
     Returns the original template string. Also used when the object is
     stringified.
@@ -43,6 +49,10 @@ METHODS
   process_to_string( %vars )
     Processes key-values pairs like the "process" method, but doesn't
     inflate the result to a URI object.
+
+  deparse( $uri )
+    Does some rudimentary deparsing of a uri based on the current template.
+    Returns a hash with the extracted values.
 
 AUTHOR
     * Brian Cassidy <bricas@cpan.org>

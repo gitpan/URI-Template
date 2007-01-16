@@ -1,6 +1,6 @@
 ---
 name: URI-Template
-version: 0.02
+version: 0.03
 author:
   - 'Brian Cassidy <brian.cassidy@nald.ca>'
 abstract: Object for handling URI templates
@@ -12,7 +12,7 @@ requires:
 provides:
   URI::Template:
     file: lib/URI/Template.pm
-    version: 0.02
+    version: 0.03
 generated_by: Module::Build version 0.2805
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
