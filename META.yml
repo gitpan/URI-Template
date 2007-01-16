@@ -1,0 +1,19 @@
+---
+name: URI-Template
+version: 0.01
+author:
+  - 'Brian Cassidy <brian.cassidy@nald.ca>'
+abstract: Object for handle URI templates
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+requires:
+  URI: 0
+provides:
+  URI::Template:
+    file: lib/URI/Template.pm
+    version: 0.01
+generated_by: Module::Build version 0.2805
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
