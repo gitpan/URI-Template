@@ -40,7 +40,8 @@ METHODS
     stringified.
 
   variables( )
-    Returns an array of variable names found in the template.
+    Returns an array of variable names found in the template. NB: they are
+    returned in random order.
 
   process( %vars )
     Given a list of key-value pairs, it will URI escape the values and
