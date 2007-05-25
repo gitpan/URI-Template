@@ -43,13 +43,18 @@ METHODS
     Returns an array of variable names found in the template. NB: they are
     returned in random order.
 
-  process( %vars )
-    Given a list of key-value pairs, it will URI escape the values and
-    substitute them in to the template. Returns a URI object.
+  all_variables( )
+    Returns an array of variable names found as they appear in template --
+    in order, duplicates included.
 
-  process_to_string( %vars )
-    Processes key-values pairs like the "process" method, but doesn't
-    inflate the result to a URI object.
+  process( %vars|\@values )
+    Given a list of key-value pairs or an array ref of values (for
+    positional substitution), it will URI escape the values and substitute
+    them in to the template. Returns a URI object.
+
+  process_to_string( %vars|\@values )
+    Processes input like the "process" method, but doesn't inflate the
+    result to a URI object.
 
   deparse( $uri )
     Does some rudimentary deparsing of a uri based on the current template.
