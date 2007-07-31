@@ -3,7 +3,7 @@ package URI::Template;
 use strict;
 use warnings;
 
-our $VERSION = '0.08_01';
+our $VERSION = '0.08_02';
 
 use URI;
 use URI::Escape ();
@@ -192,11 +192,7 @@ sub deparse {
 
 =head1 AUTHOR
 
-=over 4 
-
-=item * Brian Cassidy E<lt>bricas@cpan.orgE<gt>
-
-=back
+Brian Cassidy E<lt>bricas@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
