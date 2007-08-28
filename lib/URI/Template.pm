@@ -3,7 +3,7 @@ package URI::Template;
 use strict;
 use warnings;
 
-our $VERSION = '0.08_02';
+our $VERSION = '0.09';
 
 use URI;
 use URI::Escape ();
@@ -32,19 +32,10 @@ as described at http://www.ietf.org/internet-drafts/draft-gregorio-uritemplate-0
 
 =head1 INSTALLATION
 
-To install this module via Module::Build:
-
-	perl Build.PL
-	./Build         # or `perl Build`
-	./Build test    # or `perl Build test`
-	./Build install # or `perl Build install`
-
-To install this module via ExtUtils::MakeMaker:
-
-	perl Makefile.PL
-	make
-	make test
-	make install
+    perl Makefile.PL
+    make
+    make test
+    make install
 
 =head1 METHODS
 
@@ -76,8 +67,8 @@ sub as_string {
 
 =head2 variables( )
 
-Returns an array of variable names found in the template. NB: they
-are returned in random order.
+Returns an array of unique variable names found in the template.
+NB: they are returned in random order.
 
 =cut
 

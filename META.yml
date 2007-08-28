@@ -15,4 +15,4 @@ no_index:
 requires: 
   Test::More: 0
   URI: 0
-version: 0.08_02
+version: 0.09
