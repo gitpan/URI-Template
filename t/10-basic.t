@@ -15,12 +15,8 @@ use_ok( 'URI::Template' );
     my $text     = 'http://foo.com/{bar}/{baz}?q=%7B';
     my $template = URI::Template->new( $text );
     isa_ok( $template, 'URI::Template' );
-    is_deeply(
-        [ sort $template->variables ],
-        [ qw( bar baz ) ],
-        'variables()'
-    );
-    is( "$template", $text, 'as_string()' );
+    is_deeply( [ sort $template->variables ], [ 'bar', 'baz' ], 'variables()' );
+    is( "$template", $text, 'stringify' );
 
     {
         my $result = $template->process( bar => 'x', baz => 'y' );
@@ -58,7 +54,7 @@ use_ok( 'URI::Template' );
 
 {
     my $template = URI::Template->new( 'http://foo.com/{z}/{z}/' );
-    is_deeply( [ $template->variables ], [ 'z' ], 'unique vars' );
+    is_deeply( [ sort $template->variables ], [ 'z' ], 'no duplicates in variables()' );
     my $result = $template->process( 'z' => 'x' );
     is( $result, 'http://foo.com/x/x/', 'multiple replaces' );
 }

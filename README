@@ -7,13 +7,10 @@ SYNOPSIS
         my $uri      = $template->process( x => 'y' );
         # uri is a URI object with value 'http://example.com/y'
 
-        my %result = $template->deparse( $uri );
-        # %result is ( x => 'y' )
-
 DESCRIPTION
     This is an initial attempt to provide a wrapper around URI templates as
     described at
-    http://www.ietf.org/internet-drafts/draft-gregorio-uritemplate-01.txt
+    http://www.ietf.org/internet-drafts/draft-gregorio-uritemplate-03.txt
 
 INSTALLATION
         perl Makefile.PL
@@ -26,33 +23,31 @@ METHODS
     Creates a new URI::Template instance with the template passed in as the
     first parameter.
 
-  as_string( )
-    Returns the original template string. Also used when the object is
-    stringified.
+  template
+    This method returns the original template string.
 
-  variables( )
+  variables
     Returns an array of unique variable names found in the template. NB:
     they are returned in random order.
 
-  all_variables( )
-    Returns an array of variable names found as they appear in template --
-    in order, duplicates included.
+  expansions
+    This method returns an list of expansions found in the template.
+    Currently, these are just coderefs. In the future, they will be more
+    interesting.
 
-  process( %vars|\@values )
+  process( \%vars )
     Given a list of key-value pairs or an array ref of values (for
     positional substitution), it will URI escape the values and substitute
     them in to the template. Returns a URI object.
 
-  process_to_string( %vars|\@values )
+  process_to_string( \%vars )
     Processes input like the "process" method, but doesn't inflate the
     result to a URI object.
 
-  deparse( $uri )
-    Does some rudimentary deparsing of a uri based on the current template.
-    Returns a hash with the extracted values.
-
 AUTHOR
     Brian Cassidy <bricas@cpan.org>
+
+    Ricardo SIGNES <rjbs@cpan.org>
 
 COPYRIGHT AND LICENSE
     Copyright 2008 by Brian Cassidy

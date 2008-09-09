@@ -1,11 +1,8 @@
 Changes
-inc/Module/AutoInstall.pm
 inc/Module/Install.pm
-inc/Module/Install/AutoInstall.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Can.pm
 inc/Module/Install/Fetch.pm
-inc/Module/Install/Include.pm
 inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
 inc/Module/Install/Win32.pm
@@ -17,9 +14,9 @@ META.yml
 README
 t/01-use.t
 t/10-basic.t
-t/11-ordered.t
 t/12-suite.t
-t/20-deparse.t
 t/98-pod.t
 t/99-podcoverage.t
+t/data/opensearch.json
+t/data/spec-other.json
 t/data/spec.json
