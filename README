@@ -1,5 +1,5 @@
 NAME
-    URI::Template - Object for handling URI templates
+    URI::Template - Object for handling URI templates (RFC 6570)
 
 SYNOPSIS
         use URI::Template;
@@ -8,9 +8,8 @@ SYNOPSIS
         # uri is a URI object with value 'http://example.com/y'
 
 DESCRIPTION
-    This is an initial attempt to provide a wrapper around URI templates as
-    described at
-    http://www.ietf.org/internet-drafts/draft-gregorio-uritemplate-03.txt
+    This module provides a wrapper around URI templates as described in RFC
+    6570: http://tools.ietf.org/html/rfc6570
 
 INSTALLATION
         perl Makefile.PL
@@ -44,13 +43,13 @@ METHODS
     Processes input like the "process" method, but doesn't inflate the
     result to a URI object.
 
-AUTHOR
-    Brian Cassidy <bricas@cpan.org>
+AUTHORS
+    *   Brian Cassidy <bricas@cpan.org>
 
-    Ricardo SIGNES <rjbs@cpan.org>
+    *   Ricardo SIGNES <rjbs@cpan.org>
 
 COPYRIGHT AND LICENSE
-    Copyright 2007-2009 by Brian Cassidy
+    Copyright 2007-2012 by Brian Cassidy
 
     This library is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
