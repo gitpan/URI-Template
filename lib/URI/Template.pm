@@ -3,7 +3,7 @@ package URI::Template;
 use strict;
 use warnings;
 
-our $VERSION = '0.16';
+our $VERSION = '0.17';
 
 use URI;
 use URI::Escape        ();
@@ -123,7 +123,10 @@ sub _tostring_query {
     $join = '&' if $exp->{ op } =~ /[?&]/;
 
     if ( ref $value eq 'ARRAY' ) {
-        return unless @$value;
+        if( !@$value ) {
+            return if $var->{ explode };
+            return $var->{ name } . '=';
+        }
         if ( $var->{ explode } ) {
             return join( $join,
                 map { $var->{ name } . '=' . _quote( $_, $safe ) } @$value );
@@ -134,7 +137,10 @@ sub _tostring_query {
         }
     }
     elsif ( ref $value eq 'HASH' ) {
-        return unless keys %$value;
+        if( !keys %$value ) {
+            return if $var->{ explode };
+            return $var->{ name } . '=';
+        }
         if ( $var->{ explode } ) {
             return join(
                 $join,
@@ -387,7 +393,7 @@ URI object.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007-2012 by Brian Cassidy
+Copyright 2007-2013 by Brian Cassidy
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
