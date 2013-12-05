@@ -3,7 +3,7 @@ package URI::Template;
 use strict;
 use warnings;
 
-our $VERSION = '0.17';
+our $VERSION = '0.18';
 
 use URI;
 use URI::Escape        ();
@@ -123,10 +123,7 @@ sub _tostring_query {
     $join = '&' if $exp->{ op } =~ /[?&]/;
 
     if ( ref $value eq 'ARRAY' ) {
-        if( !@$value ) {
-            return if $var->{ explode };
-            return $var->{ name } . '=';
-        }
+        return if !@$value;
         if ( $var->{ explode } ) {
             return join( $join,
                 map { $var->{ name } . '=' . _quote( $_, $safe ) } @$value );
@@ -137,10 +134,7 @@ sub _tostring_query {
         }
     }
     elsif ( ref $value eq 'HASH' ) {
-        if( !keys %$value ) {
-            return if $var->{ explode };
-            return $var->{ name } . '=';
-        }
+        return if !keys %$value;
         if ( $var->{ explode } ) {
             return join(
                 $join,
@@ -341,7 +335,7 @@ URI::Template - Object for handling URI templates (RFC 6570)
 =head1 DESCRIPTION
 
 This module provides a wrapper around URI templates as described in RFC 6570: 
-http://tools.ietf.org/html/rfc6570
+L<< http://tools.ietf.org/html/rfc6570 >>.
 
 =head1 INSTALLATION
 
