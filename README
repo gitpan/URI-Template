@@ -3,8 +3,16 @@ NAME
 
 SYNOPSIS
         use URI::Template;
+   
         my $template = URI::Template->new( 'http://example.com/{x}' );
         my $uri      = $template->process( x => 'y' );
+
+        # or
+    
+        my $template = URI::Template->new();
+        $template->template( 'http://example.com/{x}' );
+        my $uri      = $template->process( x => 'y' );
+    
         # uri is a URI object with value 'http://example.com/y'
 
 DESCRIPTION
@@ -20,10 +28,11 @@ INSTALLATION
 METHODS
   new( $template )
     Creates a new URI::Template instance with the template passed in as the
-    first parameter.
+    first parameter (optional).
 
-  template
-    This method returns the original template string.
+  template( $template )
+    This method returns the original template string. If provided, it will
+    also set and parse a new template string.
 
   variables
     Returns an array of unique variable names found in the template. NB:
@@ -49,7 +58,7 @@ AUTHORS
     *   Ricardo SIGNES <rjbs@cpan.org>
 
 COPYRIGHT AND LICENSE
-    Copyright 2007-2013 by Brian Cassidy
+    Copyright 2007-2015 by Brian Cassidy
 
     This library is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.

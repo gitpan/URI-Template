@@ -3,7 +3,7 @@ package URI::Template;
 use strict;
 use warnings;
 
-our $VERSION = '0.18';
+our $VERSION = '0.19';
 
 use URI;
 use URI::Escape        ();
@@ -24,7 +24,7 @@ my %TOSTRING = (
 
 sub new {
     my $class = shift;
-    my $templ = shift || die 'No template provided';
+    my $templ = shift || '';
     my $self  = bless { template => $templ, _vars => {} } => $class;
 
     $self->_study;
@@ -286,7 +286,18 @@ sub _compile_expansion {
 }
 
 sub template {
-    return $_[ 0 ]->{ template };
+    my $self = shift;
+    my $new_template = shift;
+
+    #   Update template
+    if ( $new_template && $new_template ne $self->{ template } ) {
+        $self->{ template } = $new_template;
+        $self->{ _vars } = {};
+        $self->_study;
+        return $self;
+    }
+
+    return $self->{ template };
 }
 
 sub variables {
@@ -328,8 +339,16 @@ URI::Template - Object for handling URI templates (RFC 6570)
 =head1 SYNOPSIS
 
     use URI::Template;
+   
     my $template = URI::Template->new( 'http://example.com/{x}' );
     my $uri      = $template->process( x => 'y' );
+
+    # or
+    
+    my $template = URI::Template->new();
+    $template->template( 'http://example.com/{x}' );
+    my $uri      = $template->process( x => 'y' );
+    
     # uri is a URI object with value 'http://example.com/y'
 
 =head1 DESCRIPTION
@@ -349,11 +368,12 @@ L<< http://tools.ietf.org/html/rfc6570 >>.
 =head2 new( $template )
 
 Creates a new L<URI::Template> instance with the template passed in
-as the first parameter.
+as the first parameter (optional).
 
-=head2 template
+=head2 template( $template )
 
-This method returns the original template string.
+This method returns the original template string. If provided, it will also set and parse a 
+new template string.
 
 =head2 variables
 
@@ -387,7 +407,7 @@ URI object.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2007-2013 by Brian Cassidy
+Copyright 2007-2015 by Brian Cassidy
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
